@@ -37,11 +37,11 @@
 					<td style="width: 3rem" class="align-middle text-center">:</td>
 					<td class="align-middle"><?= date('d-M-Y, \P\u\k\u\l H:i', strtotime($pengaduan['tgl_pengaduan'])); ?></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<th class="align-middle">Lokasi</th>
 					<td style="width: 3rem" class="align-middle text-center">:</td>
 					<td class="align-middle"><?= $pengaduan['kelurahan']; ?></td>
-				</tr>
+				</tr> -->
 			</table>
 		</div>
 	</div>
@@ -136,6 +136,7 @@
 							<th class="align-middle">Isi Tanggapan</th>
 							<th class="align-middle">Foto Tanggapan</th>
 							<th class="align-middle">Status</th>
+							<th class="align-middle">Teknisi</th>
 							<th class="align-middle">Aksi</th>
 						</tr>
 					</thead>
@@ -144,7 +145,7 @@
 						<?php foreach ($tanggapan as $dt): ?>
 							<tr>
 								<td class="align-middle"><?= $i++; ?></td>
-								<td class="align-middle"><?= $dt['username']; ?></td>
+								<td class="align-middle"><?= $dt['nama_pelapor']; ?></td>
 								<td class="align-middle"><?= date('d-M-Y, \P\u\k\u\l H:i', strtotime($dt['tgl_tanggapan'])); ?></td>
 								<td class="align-middle"><?= $dt['isi_tanggapan']; ?></td>
 								<?php 
@@ -172,6 +173,7 @@
 										<button type="button" class="btn btn-sm text-center btn-secondary"><i class="fas fa-fw fa-times"></i> <?= $status; ?></button>
 									<?php endif ?>
 								</td>
+								<td class="align-middle"><?= $dt['nama_teknisi']; ?></td>
 								<td class="align-middle">
 									<a href="<?= base_url('tanggapan/editTanggapan/' . $pengaduan['id_pengaduan'] . '/' . $dt['id_tanggapan']); ?>" class="btn btn-sm btn-success m-1"><i class="fas fa-fw fa-edit"></i></a>
 									<?php if ($dataUser['jabatan'] == 'administrator'): ?>

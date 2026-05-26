@@ -13,7 +13,7 @@ class Pengaduan_model extends CI_Model
 	public function getPengaduan()
 	{
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		$this->db->order_by('id_pengaduan', 'desc');
 		return $this->db->get('pengaduan')->result_array();
 	}
@@ -23,7 +23,7 @@ class Pengaduan_model extends CI_Model
 		$dari_tgl = date("Y-m-d\T00:00:01", strtotime($dari_tgl));
 		$sampai_tgl = date("Y-m-d\T23:59:59", strtotime($sampai_tgl));
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		$this->db->order_by('id_pengaduan', 'desc');
 		if ($status_pengaduan == 'semua')
 		{
@@ -38,22 +38,60 @@ class Pengaduan_model extends CI_Model
 	public function getPengaduanByStatusPengaduan($status_pengaduan = '')
 	{
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		$this->db->order_by('id_pengaduan', 'desc');
 		if ($status_pengaduan) 
 		{
 			return $this->db->get_where('pengaduan', ['pengaduan.status_pengaduan' => $status_pengaduan])->result_array();
-		} 
+		}
 		else 
 		{
 			return $this->db->get('pengaduan')->result_array();
 		}
 	}
+	
+	public function getPengaduanByIdTeknisi($id_teknisi = null)
+	{
+		$this->db->select('
+			pengaduan.*,
+			masyarakat.nama
+		');
+
+		$this->db->from('pengaduan');
+
+		$this->db->join(
+			'masyarakat',
+			'pengaduan.id_masyarakat = masyarakat.id_masyarakat'
+		);
+		if ($id_teknisi) {
+
+			$this->db->join(
+				'tanggapan',
+				'pengaduan.id_pengaduan = tanggapan.id_pengaduan'
+			);
+
+			$this->db->where(
+				'tanggapan.id_teknisi',
+				$id_teknisi
+			);
+
+			$this->db->group_by(
+				'pengaduan.id_pengaduan'
+			);
+		}
+
+		$this->db->order_by(
+			'pengaduan.id_pengaduan',
+			'DESC'
+		);
+
+		return $this->db->get()->result_array();
+	}
 
 	public function getPengaduanById($id_pengaduan)
 	{
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		return $this->db->get_where('pengaduan', ['id_pengaduan' => $id_pengaduan])->row_array();	
 	}
 
@@ -79,7 +117,7 @@ class Pengaduan_model extends CI_Model
 		$data = [
 			'isi_laporan'	=> $this->input->post('isi_laporan', true),
 			'id_masyarakat'	=> $this->input->post('id_masyarakat', true),
-			'id_kelurahan'	=> $this->input->post('id_kelurahan', true),
+			// 'id_kelurahan'	=> $this->input->post('id_kelurahan', true),
 			'tgl_pengaduan' => date('Y-m-d\TH:i:s')
 		];
 
@@ -120,9 +158,9 @@ class Pengaduan_model extends CI_Model
 			}
 		}
 
-		$this->db->update('pengaduan', $data, ['id_pengaduan' => $id_pengaduan]);
+		$this->db->update('pengaduan', $data_pengaduan, ['id_pengaduan' => $id_pengaduan]);
 
-		$isi_log = 'Pengaduan ' . $data['isi_laporan'] . ' berhasil diubah';
+		$isi_log = 'Pengaduan ' . $data_pengaduan['isi_laporan'] . ' berhasil diubah';
 		$this->lomo->addLog($isi_log, $dataUser['id_user']);
 		$this->session->set_flashdata('message-success', $isi_log);
 		redirect('pengaduan');

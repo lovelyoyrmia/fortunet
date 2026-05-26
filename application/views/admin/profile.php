@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row justify-content-center py-3">
 		<div class="col-lg">
-			<h3><i class="fas fa-fw fa-user"></i> Profil - <?= $dataUser['username']; ?></h3>
+			<h3><i class="fas fa-fw fa-user"></i> Profil - <?= $dataUser['nama']; ?></h3>
 		</div>
 	</div>
 	<div class="row py-3">

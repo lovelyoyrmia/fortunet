@@ -5,7 +5,7 @@
 		</div>
 		<?php if ($dataUser['jabatan'] == 'administrator'): ?>
 			<div class="col-lg header-button">
-				<a href="<?= base_url('kecamatan/addKecamatan'); ?>" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i> Tambah Kecamatan</a>
+				<a href="<?= base_url('kecamatan/addKecamatan'); ?>" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i> Add Kecamatan</a>
 			</div>
 		<?php endif ?>
 	</div>

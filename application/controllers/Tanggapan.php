@@ -9,6 +9,7 @@ class Tanggapan extends CI_Controller
 		$this->load->model('Admin_model', 'admo');
 		$this->load->model('Tanggapan_model', 'tamo');
 		$this->load->model('Pengaduan_model', 'pemo');
+		$this->load->model('Teknisi_model', 'temo');
 
 		$this->admo->checkLoginAdmin();
 	}
@@ -37,8 +38,10 @@ class Tanggapan extends CI_Controller
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
 		$data['pengaduan']	= $this->pemo->getPengaduanById($id_pengaduan);
 		$data['title']  	= 'Tambah Tanggapan - ' . $data['pengaduan']['isi_laporan'];
+		$data['teknisi']	= $this->temo->getDataTeknisi();
 
-		$this->form_validation->set_rules('isi_tanggapan', 'Isi Tanggapan', 'required|trim');
+		$this->form_validation->set_rules('id_teknisi', 'Teknisi', 'required|trim|is_natural_no_zero');
+		// $this->form_validation->set_rules('isi_tanggapan', 'Isi Tanggapan', 'required|trim');
 		$this->form_validation->set_rules('status_tanggapan', 'Status Tanggapan', 'required|trim');
 		if ($this->form_validation->run() == false) {
 		    $this->load->view('templates/header-admin', $data);

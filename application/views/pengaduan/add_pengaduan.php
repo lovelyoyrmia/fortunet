@@ -17,13 +17,15 @@
 		<div class="col-lg-6 p-3">
 			<div class="card">
 			  <div class="card-header">
-			  	<h3 class="my-auto"><i class="fas fa-fw fa-plus"></i> Tambah Pengaduan</h3>
+			  	<h3 class="my-auto"><i class="fas fa-fw fa-plus"></i> Add Pengaduan</h3>
 			  </div>
 			  <div class="card-body">
 			  	<form action="<?= base_url('pengaduan/addPengaduan'); ?>" method="post" enctype="multipart/form-data">
 			  		<div class="form-group">
 						<label for="isi_laporan">Isi Laporan</label>
+						<small class="text-muted d-block mb-2"> Jelaskan kronologi </small>
 						<textarea id="isi_laporan" class="form-control <?= (form_error('isi_laporan')) ? 'is-invalid' : ''; ?>" name="isi_laporan" required><?= set_value('isi_laporan'); ?></textarea>
+						<small class="text-muted d-block mb-2"> Jelaskan kendala yang dialami secara detail   </small>
 						<div class="invalid-feedback">
 			              <?= form_error('isi_laporan'); ?>
 			            </div>
@@ -61,7 +63,7 @@
             </div>
 					</div>
 					<div class="form-group">
-						<label for="foto">Foto</label> <br>
+						<label for="foto">Foto </label> <br>
 						<a href="<?= base_url('assets/img/img_pengaduan/default.png'); ?>" class="enlarge" id="check_enlarge_photo">
 							<img class="img-fluid rounded img-w-150 border border-dark" id="check_photo" src="<?= base_url('assets/img/img_pengaduan/default.png'); ?>" alt="Foto Pengaduan">
 						</a>

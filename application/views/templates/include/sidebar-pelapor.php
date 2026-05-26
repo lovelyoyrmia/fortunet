@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a href="<?= base_url('pelapor'); ?>" class="brand-link">
     <img src="<?= base_url('assets/img/img_properties/favicon.png'); ?>" alt="AdminLTE Logo" class="img-w-50">
-    <span class="brand-text">Zona Lapor</span>
+    <span class="brand-text">Fortunet</span>
   </a>
 
   <!-- Sidebar -->
@@ -21,7 +21,7 @@
             <a href="<?= base_url('pelapor/profile'); ?>" class="nav-link"><i class="nav-icon fas fa-fw fa-user"></i> <p><?= $dataUser['username']; ?></p></a>
           <?php endif ?>
         </li>
-        <li class="nav-item">
+<!--         <li class="nav-item">
           <?php if (
             $_SERVER['REQUEST_URI'] == '/zona_lapor/pelapor' || 
             $_SERVER['REQUEST_URI'] == '/zona_lapor/pelapor/'
@@ -32,8 +32,8 @@
           <?php endif ?>
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dasbor
-            </p>
+              Dashboard
+            </p> -->
           </a>
         </li>
         <li class="nav-item">
@@ -68,14 +68,14 @@
             </a>
           <?php endif ?>
         </li>
-        <li class="nav-item">
+<!--         <li class="nav-item">
           <?php if (
             $_SERVER['REQUEST_URI'] == '/zona_lapor/pelaporLaporan' || 
             $_SERVER['REQUEST_URI'] == '/zona_lapor/pelaporLaporan/'
           ): ?>
             <a href="<?= base_url('pelaporLaporan'); ?>" class="nav-link active">
               <i class="fas fa-file-alt nav-icon"></i>
-              <p>Laporan</p>
+              <p>Laporan</p> -->
             </a>
           <?php else: ?>
             <a href="<?= base_url('pelaporLaporan'); ?>" class="nav-link">

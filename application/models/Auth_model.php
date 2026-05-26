@@ -13,7 +13,8 @@ class Auth_model extends CI_Model
 	{
 		$username = $this->input->post('username', true);
 		$password = $this->input->post('password', true);
-
+		log_message('debug', 'Login attempt with username: ' . $username);
+		log_message('debug', 'Login attempt with password: ' . $password);
 		// check username
 		if ($dataUser = $this->admo->getDataUserAdminByUsername($username)) 
 		{
@@ -35,7 +36,7 @@ class Auth_model extends CI_Model
 		}
 		else
 		{
-			$this->session->set_flashdata('message-failed', 'Gagal masuk, username yang anda masukkan salah');
+			// $this->session->set_flashdata('message-failed', 'Gagal masuk, username yang anda masukkan salah');
 			redirect('auth');
 		}
 	}

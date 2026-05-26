@@ -19,27 +19,27 @@
 		</div>
 	</div>
 	<div class="row justify-content-center">
-		<div class="col text-center m-1">
+		<!-- 	<div class="col text-center m-1">
 			<a href="<?= base_url('pengaduan/index'); ?>" class="btn btn-info"><i class="fas fa-fw fa-clipboard-list"></i> All</a>
-		</div>
-		<div class="col text-center m-1">
-			<a href="<?= base_url('pengaduan/index/belum_ditanggapi'); ?>" class="btn btn-sm btn-secondary"><i class="fas fa-fw fa-times"></i> Belum ditanggapi</a>
-		</div>
-		<div class="col text-center m-1">
-			<a href="<?= base_url('pengaduan/index/proses'); ?>" class="btn btn-danger"><i class="fas fa-fw fa-sync"></i> Proses</a>
-		</div>
-		<div class="col text-center m-1">
-			<a href="<?= base_url('pengaduan/index/valid'); ?>" class="btn btn-success"><i class="fas fa-fw fa-check"></i> Valid</a>
-		</div>
-		<div class="col text-center m-1">
+		</div> -->
+		<!-- <div class="col text-center m-1">
+			<a href="<?= base_url('pengaduan/index/belum_ditanggapi'); ?>" class="btn btn-sm btn-secondary"><i class="fas fa-fw fa-times"></i> T </a>
+		</div> -->
+		<!-- <div class="col text-center m-1">
+			<a href="<?= base_url('pengaduan/index/proses'); ?>" class="btn btn-danger"><i class="fas fa-fw fa-sync"></i> PENDING </a>
+		</div> -->
+		<!-- <div class="col text-center m-1">
+			<a href="<?= base_url('pengaduan/index/valid'); ?>" class="btn btn-success"><i class="fas fa-fw fa-check"></i> DONE</a>
+		</div> -->
+		<!-- <div class="col text-center m-1">
 			<a href="<?= base_url('pengaduan/index/pengerjaan'); ?>" class="btn btn-warning"><i class="fas fa-fw fa-hammer"></i> Pengerjaan</a>
-		</div>
-		<div class="col text-center m-1">
-			<a href="<?= base_url('pengaduan/index/selesai'); ?>" class="btn btn-primary"><i class="fas fa-fw fa-check-double"></i> Selesai</a>
-		</div>
-		<div class="col text-center m-1">
+		</div> -->
+		<!-- <div class="col text-center m-1">
+			<a href="<?= base_url('pengaduan/index/selesai'); ?>" class="btn btn-primary"><i class="fas fa-fw fa-check-double"></i> VALID</a>
+		</div> -->
+		<!-- <div class="col text-center m-1">
 			<a href="<?= base_url('pengaduan/index/tidak_valid'); ?>" class="btn btn-secondary"><i class="fas fa-fw fa-times"></i> Tidak Valid</a>
-		</div>
+		</div> -->
 	</div>
 	<div class="row py-3">
 		<div class="col-lg">
@@ -51,10 +51,10 @@
 							<th class="align-middle">Pelapor</th>
 							<th class="align-middle">Tanggal Pengaduan</th>
 							<th class="align-middle">Isi Laporan</th>
-							<th class="align-middle">Lokasi</th>
+							<!-- <th class="align-middle">Lokasi</th> -->
 							<th class="align-middle">Foto</th>
 							<th class="align-middle">Status</th>
-							<th class="align-middle">Tangapan</th>
+							<!-- <th class="align-middle">Teknisi</th> -->
 							<th class="align-middle">Aksi</th>
 						</tr>
 					</thead>
@@ -69,10 +69,10 @@
 							?>
 							<tr>
 								<td class="align-middle"><?= $i++; ?></td>
-								<td class="align-middle"><?= $dp['username']; ?></td>
+								<td class="align-middle"><?= $dp['nama']; ?></td>
 								<td class="align-middle"><?= $dp['tgl_pengaduan']; ?></td>
 								<td class="align-middle"><?= $dp['isi_laporan']; ?></td>
-								<td class="align-middle"><?= $dp['kelurahan']; ?></td>
+								<!-- <td class="align-middle"><?= $dp['kelurahan']; ?></td> -->
 								<td class="align-middle text-center">
 									<a href="<?= base_url('assets/img/img_pengaduan/') . $dp['foto']; ?>" class="enlarge">
 										<img src="<?= base_url('assets/img/img_pengaduan/') . $dp['foto']; ?>" class="img-fluid img-w-75-hm-100" alt="<?= $dp['foto']; ?>">
@@ -91,23 +91,6 @@
 										<button type="button" class="btn btn-sm text-center btn-secondary"><i class="fas fa-fw fa-times"></i> <?= $status; ?></button>
 									<?php else: ?>
 										<button type="button" class="btn btn-sm text-center btn-secondary"><i class="fas fa-fw fa-times"></i> <?= $status; ?></button>
-									<?php endif ?>
-								</td>
-								<td class="align-middle">
-									<?php if ($getTanggapan): ?>
-										<?php if ($getTanggapan['status_tanggapan'] == 'proses'): ?>
-											<p><?= $getTanggapan['isi_tanggapan']; ?></p>
-										<?php elseif ($getTanggapan['status_tanggapan'] == 'valid'): ?>
-											<p><?= $getTanggapan['isi_tanggapan']; ?></p>
-										<?php elseif ($getTanggapan['status_tanggapan'] == 'pengerjaan'): ?>
-											<p><?= $getTanggapan['isi_tanggapan']; ?></p>
-										<?php elseif ($getTanggapan['status_tanggapan'] == 'selesai'): ?>
-											<p><?= $getTanggapan['isi_tanggapan']; ?></p>
-										<?php elseif ($getTanggapan['status_tanggapan'] == 'tidak_valid'): ?>
-											<p><?= $getTanggapan['isi_tanggapan']; ?></p>
-										<?php endif ?>
-									<?php else: ?>
-										<p>-</p>
 									<?php endif ?>
 								</td>
 								<td class="align-middle text-center">

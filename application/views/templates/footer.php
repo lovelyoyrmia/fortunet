@@ -2,11 +2,11 @@
 		<div class="container">
 			<div class="row my-4">
 				<div class="col-lg footer-copyright my-auto">
-					<h5 class="text-dark">Copyright &copy; 2021 by Andri Firman Saputra</h5>
+					<h5 class="text-dark">Copyright &copy; 2026 PT Fortunet Milennia Sukses</h5>
 					<div class="row">
 						<div class="col-sm-4 col-12 my-2 text-left">
 							<a class="text-decoration-none text-dark" href="<?= base_url('admin'); ?>">Admin's Room</a>
-						</div>
+						</div> 
 						<div class="col-sm-4 col-12 my-2 text-left">
 							<a class="text-decoration-none text-dark" href="<?= base_url('landing/privacyPolicy'); ?>">Privacy Policy</a>
 						</div>
@@ -15,10 +15,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg footer-sosial-media pt-2 my-auto">
+				<!-- <div class="col-lg footer-sosial-media pt-2 my-auto">
 					<a class="text-decoration-none mx-2 text-dark" target="_blank" href="https://github.com/hako-975"><i class="fab fa-2x fa-github"></i></a>
 					<a class="text-decoration-none mx-2 text-dark" target="_blank" href="https://instagram.com/andri_firman_975"><i class="fab fa-2x fa-instagram"></i></a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</footer>

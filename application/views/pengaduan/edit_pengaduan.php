@@ -25,6 +25,7 @@
 			  		<div class="form-group">
 							<label for="isi_laporan">Isi Laporan</label>
 							<textarea style="cursor: not-allowed;" disabled id="isi_laporan" class="form-control <?= (form_error('isi_laporan')) ? 'is-invalid' : ''; ?>" name="isi_laporan" required><?= (form_error('isi_laporan')) ? set_value('isi_laporan') : $pengaduan['isi_laporan']; ?></textarea>
+							<small class="text-muted d-block mb-2"> Jelaskan kendala yang dialami secara detail   </small>
 							<div class="invalid-feedback">
 	              <?= form_error('isi_laporan'); ?>
 	            </div>

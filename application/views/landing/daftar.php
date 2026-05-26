@@ -54,8 +54,8 @@
 		            </div>
 							</div>
 							<div class="form-group">
-								<label for="username"><i class="fas fa-fw fa-user"></i> Username</label>
-								<input type="text" id="username" class="form-control <?= (form_error('username')) ? 'is-invalid' : ''; ?>" name="username" required placeholder="Huruf kecil semua tanpa spasi" value="<?= set_value('username'); ?>">
+								<label for="username"><i class="fas fa-fw fa-user"></i> Id Pelanggan</label>
+								<input type="text" id="username" class="form-control <?= (form_error('username')) ? 'is-invalid' : ''; ?>" name="username" required placeholder="7 digit" value="<?= set_value('username'); ?>">
 								<div class="invalid-feedback">
 		              <?= form_error('username'); ?>
 		            </div>
@@ -81,6 +81,27 @@
 		              <?= form_error('no_telepon'); ?>
 		            </div>
 							</div>
+							<div class="form-group">
+							<label for="form_kecamatan">Kecamatan</label>
+							<select class="custom-select <?= (form_error('id_kecamatan')) ? 'is-invalid' : ''; ?>" id="form_kecamatan">
+								<option value="0">Pilih Kecamatan</option>
+								<?php foreach ($kecamatan as $dataKecamatan): ?>
+									<option value="<?= $dataKecamatan['id_kecamatan']; ?>"><?= $dataKecamatan['kecamatan']; ?></option>
+								<?php endforeach ?>
+							</select>
+							<div class="invalid-feedback">
+	              <?= form_error('id_kecamatan'); ?>
+	            </div>
+						</div>
+						<div class="form-group">
+							<label for="form_kelurahan">Kelurahan</label>
+							<select id="form_kelurahan" class="custom-select <?= (form_error('id_kelurahan')) ? 'is-invalid' : ''; ?>" name="id_kelurahan">
+								<option value="0">Pilih Kelurahan</option>
+							</select>
+							<div class="invalid-feedback">
+	              <?= form_error('id_kelurahan'); ?>
+	            </div>
+						</div>
 							<div class="form-group">
 								<label for="alamat"><i class="fas fa-fw fa-map-marker-alt"></i> Alamat</label>
 								<textarea id="alamat" class="form-control <?= (form_error('alamat')) ? 'is-invalid' : ''; ?>" name="alamat" required><?= set_value('alamat'); ?></textarea>

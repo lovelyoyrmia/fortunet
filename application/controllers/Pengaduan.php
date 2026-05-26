@@ -11,20 +11,26 @@ class Pengaduan extends CI_Controller
 		$this->load->model('Masyarakat_model', 'mamo');
 		$this->load->model('Kelurahan_model', 'kelmo');
 		$this->load->model('Kecamatan_model', 'kemo');
+		$this->load->model('Teknisi_model', 'temo');
 
 		$this->admo->checkLoginAdmin();
 	}
 
 	public function getKelurahanFile()
 	{
-		$this->load->view('pengaduan/get_kelurahan', $data);
+		// $this->load->view('pengaduan/get_kelurahan', $data);
 	}
 
 	public function index($status_pengaduan = '')
 	{
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
 		$data['title']  	= 'Pengaduan';
-		$data['pengaduan']	= $this->pemo->getPengaduanByStatusPengaduan($status_pengaduan);
+		if ($data['dataUser']['jabatan'] == 'teknisi') 
+		{
+			$data['pengaduan']	= $this->pemo->getPengaduanByIdTeknisi($data['dataUser']['id_user']);
+		} else {
+			$data['pengaduan']	= $this->pemo->getPengaduanByStatusPengaduan($status_pengaduan);
+		}
 
 		$this->load->view('templates/header-admin', $data);
 		$this->load->view('pengaduan/index', $data);

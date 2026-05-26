@@ -46,7 +46,7 @@ class Landing_model extends CI_Model
 		}
 		else
 		{
-			$this->session->set_flashdata('message-failed', 'Gagal masuk, username yang anda masukkan salah');
+			// $this->session->set_flashdata('message-failed', 'Gagal masuk, username yang anda masukkan salah');
 			redirect('landing/masuk');
 		}
 	}

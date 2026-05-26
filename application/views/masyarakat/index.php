@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="row justify-content-center py-3">
 		<div class="col-lg header-title">
-			<h3><i class="fas fa-fw fa-users"></i> Masyarakat</h3>
+			<h3><i class="fas fa-fw fa-users"></i> Pelanggan</h3>
 		</div>
 		<?php if ($dataUser['jabatan'] == 'administrator'): ?>
 			<div class="col-lg header-button">
-				<a href="<?= base_url('masyarakat/addMasyarakat'); ?>" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i> Tambah Masyarakat</a>
+				<a href="<?= base_url('masyarakat/addMasyarakat'); ?>" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i> Add Pelanggan</a>
 			</div>
 		<?php endif ?>
 	</div>
@@ -16,7 +16,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th class="align-middle">No.</th>
-							<th class="align-middle">Username</th>
+							<th class="align-middle">ID Pelanggan</th>
 							<th class="align-middle">Nama</th>
 							<th class="align-middle">No. Telepon</th>
 							<th class="align-middle">Alamat</th>

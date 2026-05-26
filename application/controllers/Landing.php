@@ -24,7 +24,7 @@ class Landing extends CI_Controller
 		$this->checkLogin();
 
 		$data['pengaduan']	= $this->pemo->getPengaduan();
-		$data['title'] = 'Zona Lapor';
+		$data['title'] = 'PT Fortunet Milennia Sukses';
 		$this->load->view('templates/header', $data);
 		$this->load->view('landing/index', $data);
 		$this->load->view('templates/footer', $data);
@@ -75,7 +75,7 @@ class Landing extends CI_Controller
 	public function privacyPolicy()
 	{
 		$this->checkLogin();
-		$data['title'] = 'Privacy Policy - Zona Lapor';
+		$data['title'] = 'Privacy Policy - Fortunet';
 		$this->load->view('templates/header', $data);
 		$this->load->view('landing/privacy_policy', $data);
 		$this->load->view('templates/footer', $data);
@@ -84,7 +84,7 @@ class Landing extends CI_Controller
 	public function termsAndConditions()
 	{
 		$this->checkLogin();
-		$data['title'] = 'Terms & Conditions - Zona Lapor';
+		$data['title'] = 'Terms & Conditions - Fortunet';
 		$this->load->view('templates/header', $data);
 		$this->load->view('landing/terms_and_conditions', $data);
 		$this->load->view('templates/footer', $data);
@@ -92,7 +92,7 @@ class Landing extends CI_Controller
 
 	public function saran()
 	{
-		$data['title'] = 'Zona Lapor';
+		$data['title'] = 'Fortunet';
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('no_telepon', 'No. Telepon', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');

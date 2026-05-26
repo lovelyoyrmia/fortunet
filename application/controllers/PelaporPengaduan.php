@@ -16,7 +16,7 @@ class PelaporPengaduan extends CI_Controller
 
 	public function getKelurahanFilePelapor()
 	{
-		$this->load->view('pelapor_pengaduan/get_kelurahan', $data);
+		// $this->load->view('pelapor_pengaduan/get_kelurahan', $data);
 	}
 
 	public function index($status_pengaduan = '')
@@ -33,11 +33,11 @@ class PelaporPengaduan extends CI_Controller
 	public function addPelaporPengaduan()
 	{
 		$data['dataUser']	= $this->pelmo->getDataUser();
-		$data['kelurahan']	= $this->kelmo->getKelurahan();
-		$data['kecamatan']	= $this->kemo->getKecamatan();
+		// $data['kelurahan']	= $this->kelmo->getKelurahan();
+		// $data['kecamatan']	= $this->kemo->getKecamatan();
 		$data['title'] 		= 'Tambah Pengaduan';
 
-		$this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim|is_natural_no_zero');
+		// $this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim|is_natural_no_zero');
 		$this->form_validation->set_rules('isi_laporan', 'Isi Laporan', 'required|trim');
 		if ($this->form_validation->run() == false) {
 		    $this->load->view('templates/header-pelapor', $data);
@@ -52,8 +52,8 @@ class PelaporPengaduan extends CI_Controller
 	public function editPelaporPengaduan($id_pengaduan)
 	{
 		$data['dataUser']	= $this->pelmo->getDataUser();
-		$data['kelurahan']	= $this->kelmo->getKelurahan();
-		$data['kecamatan']	= $this->kemo->getKecamatan();
+		// $data['kelurahan']	= $this->kelmo->getKelurahan();
+		// $data['kecamatan']	= $this->kemo->getKecamatan();
 		$data['pengaduan']	= $this->pepemo->getPengaduanById($id_pengaduan);
 		$data['title'] 		= 'Ubah Pengaduan - ' . $data['pengaduan']['isi_laporan'];
 
@@ -65,7 +65,7 @@ class PelaporPengaduan extends CI_Controller
 			redirect('pelaporPengaduan');
 		}
 
-		$this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim|is_natural_no_zero');
+		// $this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim|is_natural_no_zero');
 		$this->form_validation->set_rules('isi_laporan', 'Isi Laporan', 'required|trim');
 		if ($this->form_validation->run() == false) {
 		    $this->load->view('templates/header-pelapor', $data);

@@ -16,7 +16,7 @@ class Pelapor extends CI_Controller
 
 		$data['dataUser']	= $this->pelmo->getDataUser();
 		$data['pengaduan_belum_ditanggapi_pelapor']	= $this->pepemo->getPengaduanByStatusPengaduanByIdMasyarakat('belum_ditanggapi', $data['dataUser']['id_masyarakat']);
- 		$data['title'] 		= 'Dasbor';
+ 		$data['title'] 		= 'Dashboard';
 		$this->load->view('templates/header-pelapor', $data);
 		$this->load->view('pelapor/index', $data);
 		$this->load->view('templates/footer-pelapor', $data);
@@ -27,7 +27,7 @@ class Pelapor extends CI_Controller
 		$this->pelmo->checkLoginUser();
 
 		$data['dataUser']	= $this->pelmo->getDataUser();
-		$data['title'] 		= 'Profil - ' . $data['dataUser']['username'];
+		$data['title'] 		= 'Profil - ' . $data['dataUser']['nama'];
 		$this->load->view('templates/header-pelapor', $data);
 		$this->load->view('pelapor/profile', $data);
 		$this->load->view('templates/footer-pelapor', $data);
@@ -38,7 +38,7 @@ class Pelapor extends CI_Controller
 		$this->pelmo->checkLoginUser();
 
 		$data['dataUser']	= $this->pelmo->getDataUser();
-		$data['title'] 		= 'Ganti Password - ' . $data['dataUser']['username'];
+		$data['title'] 		= 'Ganti Password - ' . $data['dataUser']['nama'];
 		$this->form_validation->set_rules('old_password', 'Password Lama', 'required|trim');
 		$this->form_validation->set_rules('new_password', 'Password Baru', 'required|trim|min_length[3]|matches[verify_new_password]');
 		$this->form_validation->set_rules('verify_new_password', 'Verifikasi Password Baru', 'required|trim|min_length[3]|matches[new_password]');

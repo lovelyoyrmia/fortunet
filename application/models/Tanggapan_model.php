@@ -12,18 +12,80 @@ class Tanggapan_model extends CI_Model
 
 	public function getTanggapan()
 	{
-		$this->db->join('user', 'tanggapan.id_user=user.id_user');
-		$this->db->join('pengaduan', 'tanggapan.id_pengaduan=pengaduan.id_pengaduan');
+		$this->db->select('
+			tanggapan.*,
+			pengaduan.*,
+
+			pelapor.nama as nama_pelapor,
+			pelapor.username as username_pelapor,
+
+			teknisi.nama as nama_teknisi,
+			teknisi.username as username_teknisi
+		');
+
+		$this->db->from('tanggapan');
+
+		$this->db->join(
+			'user as pelapor',
+			'tanggapan.id_user = pelapor.id_user'
+		);
+
+		$this->db->join(
+			'user as teknisi',
+			'tanggapan.id_teknisi = teknisi.id_user'
+		);
+
+		$this->db->join(
+			'pengaduan',
+			'tanggapan.id_pengaduan = pengaduan.id_pengaduan'
+		);
+
 		$this->db->order_by('id_tanggapan', 'asc');
-		return $this->db->get('tanggapan')->result_array();
+
+		return $this->db->get()->result_array();
 	}
 
 	public function getTanggapanByIdPengaduan($id_pengaduan)
 	{
-		$this->db->join('user', 'tanggapan.id_user=user.id_user');
-		$this->db->join('pengaduan', 'tanggapan.id_pengaduan=pengaduan.id_pengaduan');
-		$this->db->order_by('id_tanggapan', 'asc');
-		return $this->db->get_where('tanggapan', ['pengaduan.id_pengaduan' => $id_pengaduan])->result_array();
+		$this->db->select('
+			tanggapan.*,
+			pengaduan.*,
+
+			pelapor.nama as nama_pelapor,
+			pelapor.username as username_pelapor,
+
+			teknisi.nama as nama_teknisi,
+			teknisi.username as username_teknisi
+		');
+
+		$this->db->from('tanggapan');
+
+		$this->db->join(
+			'user as pelapor',
+			'tanggapan.id_user = pelapor.id_user'
+		);
+
+		$this->db->join(
+			'user as teknisi',
+			'tanggapan.id_teknisi = teknisi.id_user'
+		);
+
+		$this->db->join(
+			'pengaduan',
+			'tanggapan.id_pengaduan = pengaduan.id_pengaduan'
+		);
+
+		$this->db->where(
+			'pengaduan.id_pengaduan',
+			$id_pengaduan
+		);
+
+		$this->db->order_by(
+			'id_tanggapan',
+			'asc'
+		);
+
+		return $this->db->get()->result_array();
 	}
 
 	public function getTanggapanGroupByIdPengaduan($status_tanggapan = '')
@@ -64,28 +126,29 @@ class Tanggapan_model extends CI_Model
 			exit;
 		}
 
-		$foto_tanggapan = $_FILES['foto_tanggapan']['name'];
-		if ($foto_tanggapan) {
-			$config['upload_path'] = './assets/img/img_tanggapan/';
-			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		// $foto_tanggapan = $_FILES['foto_tanggapan']['name'];
+		// if ($foto_tanggapan) {
+		// 	$config['upload_path'] = './assets/img/img_tanggapan/';
+		// 	$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		
-			$this->load->library('upload', $config);
+		// 	$this->load->library('upload', $config);
 		
-			if ($this->upload->do_upload('foto_tanggapan')) {
-				$new_foto_tanggapan = $this->upload->data('file_name');
-				$this->db->set('foto_tanggapan', $new_foto_tanggapan);
-			} else {
-				echo $this->upload->display_errors();
-			}
-		}
+		// 	if ($this->upload->do_upload('foto_tanggapan')) {
+		// 		$new_foto_tanggapan = $this->upload->data('file_name');
+		// 		$this->db->set('foto_tanggapan', $new_foto_tanggapan);
+		// 	} else {
+		// 		echo $this->upload->display_errors();
+		// 	}
+		// }
 		
 
 		$data = [
-			'isi_tanggapan'		=> $isi_tanggapan,
+			// 'isi_tanggapan'		=> $isi_tanggapan,
 			'tgl_tanggapan'		=> date('Y-m-d\TH:i:s'),
 			'status_tanggapan'	=> $status_tanggapan,
 			'id_pengaduan'		=> $id_pengaduan,
-			'id_user' 			=> $dataUser['id_user']
+			'id_user' 			=> $dataUser['id_user'],
+			'id_teknisi'		=> $this->input->post('id_teknisi', true),
 		];
 
 		$this->db->insert('tanggapan', $data);
@@ -100,7 +163,7 @@ class Tanggapan_model extends CI_Model
 	public function editTanggapan($id_pengaduan, $id_tanggapan)
 	{
 		$dataUser = $this->admo->getDataUserAdmin();
-
+		
 		$data_tanggapan = $this->getTanggapanById($id_tanggapan);
 
 		$foto_tanggapan = $_FILES['foto_tanggapan']['name'];
@@ -130,8 +193,12 @@ class Tanggapan_model extends CI_Model
 		$data = [
 			'isi_tanggapan'		=> $this->input->post('isi_tanggapan', true),
 			'tgl_tanggapan'		=> date('Y-m-d\TH:i:s'),
-			'id_user' 			=> $dataUser['id_user']
 		];
+
+		if ($dataUser['jabatan'] == 'teknisi') 
+		{
+			$data['id_teknisi'] = $dataUser['id_user'];
+		}
 
 		$this->db->update('tanggapan', $data, ['id_tanggapan' => $id_tanggapan]);
 

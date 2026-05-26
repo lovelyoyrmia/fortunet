@@ -77,7 +77,7 @@
 				<th>Lokasi</th>
 				<th>Foto</th>
 				<th>Status</th>
-				<th>Tanggapan</th>
+				<th>Teknisi</th>
 			</tr>
 		</thead>
 		<tbody>

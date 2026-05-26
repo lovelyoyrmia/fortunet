@@ -1,14 +1,14 @@
 <div id="carouselInterval" class="carousel slide mt-5 pt-3" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="3000">
-      <img src="<?= base_url('assets/img/img_properties/img_carousel/carousel-1.jpg'); ?>" class="d-block h-500 w-100">
+      <img src="<?= base_url('assets/img/img_properties/img_carousel/carousel-1.png'); ?>" class="d-block h-500 w-100">
     </div>
     <div class="carousel-item" data-interval="3000">
-      <img src="<?= base_url('assets/img/img_properties/img_carousel/carousel-2.jpg'); ?>" class="d-block h-500 w-100">
+      <img src="<?= base_url('assets/img/img_properties/img_carousel/carousel-2.png'); ?>" class="d-block h-500 w-100">
     </div>
-    <div class="carousel-item">
+   <!--  <div class="carousel-item">
       <img src="<?= base_url('assets/img/img_properties/img_carousel/carousel-3.jpg'); ?>" class="d-block h-500 w-100">
-    </div>
+    </div> -->
   </div>
   <a class="carousel-control-prev" href="#carouselInterval" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,7 +32,7 @@
 	    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	      <div class="navbar-nav">
 	        <a class="nav-link page-scroll" href="#tentang"><h5 class="my-auto">Tentang</h5></a>
-	        <a class="nav-link page-scroll" href="#daftar_laporan"><h5 class="my-auto">Daftar Laporan</h5></a>
+	        <!-- <a class="nav-link page-scroll" href="#daftar_laporan"><h5 class="my-auto">Daftar Laporan</h5></a> -->
 	        <a class="nav-link page-scroll" href="#saran"><h5 class="my-auto">Saran</h5></a>
 	      </div>
 	      <div class="navbar-nav ml-auto">
@@ -48,7 +48,7 @@
 	<div class="container pb-5">
 		<div class="row justify-content-center py-4">
 			<div class="col-lg">
-				<h4>Tata Cara Penggunaan Zona Lapor</h4>
+				<h4>Cara Laporan by Website Fortunet</h4>
 				<div class="row justify-content-center">
 					<div class="py-2 col-xl-2 col-lg-3 col-md-3">
 						<div class="card">
@@ -83,7 +83,7 @@
 						  <div class="card-body text-center">
 						  	<i class="fas fa-fw fa-exclamation"></i>
 							<h4>Pengaduan</h4>
-							<p>Pada bagian sidebar tekan menu tambah pengaduan untuk membuat laporan pengaduan.</p>
+							<p>Jelaskan kendala yang dialami secara detail, seperti kondisi lampu pada modem (LOS/PON menyala merah atau berkedip), koneksi internet putus/lambat, serta jika terdapat kabel yang putus atau rusak.</p>
 						  </div>
 						</div>
 					</div>
@@ -106,14 +106,14 @@
 		</div>
 		<div class="row py-4" id="tentang">
 			<div class="col-lg">
-				<h4>Tentang</h4>
-				<p>Zona Lapor adalah pengelolaan pengaduan pelayanan publik di daerah Tangerang Selatan, setiap organisasi penyelenggara di Indonesia belum terkelola secara efektif dan terintegrasi. Masing-masing organisasi penyelenggara mengelola pengaduan secara parsial dan tidak terkoordinir dengan baik. Akibatnya terjadi duplikasi penanganan pengaduan, atau bahkan bisa terjadi suatu pengaduan tidak ditangani oleh satupun organisasi penyelenggara, dengan alasan pengaduan bukan kewenangannya. Oleh karena itu, untuk mencapai visi yang baik dan benar dalam penanganan pengaduan masyarakat maka perlu untuk mengintegrasikan sistem pengelolaan pengaduan pelayanan publik yang efektif. Tujuannya, masyarakat memiliki saluran pengaduan yang baik, benar, terorganisir dan terpercaya.</p>
+				<h4>Tentang PT Fortunet Milennia Sukses</h4>
+				<p>PT Fortunet Milennia Sukses adalah penyedia layanan internet (Internet Service Provider) yang berfokus pada kualitas koneksi, kecepatan layanan, dan kepuasan pelanggan. Dengan dukungan teknologi modern dan tim profesional, kami siap memberikan solusi jaringan terbaik untuk kebutuhan rumah maupun bisnis.</p>
 			</div>
 		</div>
-		<div class="row py-4" id="daftar_laporan">
+		<!-- <div class="row py-4" id="daftar_laporan">
 			<div class="col-lg">
 				<h4>Daftar Laporan</h4>
-				<p class="text-justify">Berikut adalah daftar pengaduan-pengaduan masyarakat berdasarkan terbaru:</p>
+				<p class="text-justify">Berikut adalah update daftar pengaduan-pengaduan Pelanggan Fortunet:</p>
 				<div class="table-responsive">
 					<table class="table table-bordered" id="table_id">
 						<thead class="thead-dark">
@@ -190,12 +190,12 @@
 					</table>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row py-4 justify-content-center" id="saran">
 			<div class="col-lg-6 my-2">
 				<div class="border p-3 rounded">
 					<h4>Saran</h4>
-					<p>Berikan saran terbaik Anda agar aplikasi Zona Lapor bekerja lebih baik lagi.</p>
+					<p>Berikan saran terbaik Anda agar website Fortunet lebih baik lagi.</p>
 					<form action="<?= base_url('landing/saran'); ?>" method="post">
 						<div class="form-group">
 							<label for="nama"><i class="fas fa-fw fa-id-card"></i> Nama Lengkap</label>
@@ -233,8 +233,8 @@
 			</div>
 			<div class="col-lg-6 my-2">
 				<div class="border p-3 rounded">
-					<h4>Peta Tangerang Selatan</h4>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126904.29821208435!2d106.63827143352435!3d-6.295327749784684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fab10419c095%3A0x8706481c2c4aafe4!2sKota%20Tgr.%20Sel.%2C%20Kota%20Tangerang%20Selatan%2C%20Banten!5e0!3m2!1sid!2sid!4v1625382079280!5m2!1sid!2sid" style="border:0; width: 100%; height: 33.125rem;" allowfullscreen="" loading="lazy"></iframe>
+					<h4> PT Fortunet Milennia Sukses</h4>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253868.9209186403!2d106.31444338671875!3d-6.170656499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ff0052f51fcf%3A0xaa3e0355a53806eb!2sPT.%20FORTUNET%20MILENNIA%20SUKSES!5e0!3m2!1sid!2sid!4v1777618402667!5m2!1sid!2sid" width="520" height="330" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</div>
 		</div>

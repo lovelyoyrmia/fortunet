@@ -24,11 +24,12 @@
 			  		<div class="form-group">
 							<label for="isi_laporan">Isi Laporan</label>
 							<textarea id="isi_laporan" class="form-control <?= (form_error('isi_laporan')) ? 'is-invalid' : ''; ?>" name="isi_laporan" required><?= set_value('isi_laporan'); ?></textarea>
+							<small class="text-muted d-block mb-2"> Jelaskan kendala yang dialami secara detail   </small>
 							<div class="invalid-feedback">
-	              <?= form_error('isi_laporan'); ?>
-	            </div>
-						</div>
-						<div class="form-group">
+	              				<?= form_error('isi_laporan'); ?>
+	            			</div>
+					</div>
+					<!-- <div class="form-group">
 							<label for="form_kecamatan">Kecamatan</label>
 							<select class="custom-select <?= (form_error('id_kecamatan')) ? 'is-invalid' : ''; ?>" id="form_kecamatan">
 								<option value="0">Pilih Kecamatan</option>
@@ -37,26 +38,26 @@
 								<?php endforeach ?>
 							</select>
 							<div class="invalid-feedback">
-	              <?= form_error('id_kecamatan'); ?>
-	            </div>
-						</div>
-						<div class="form-group">
+								<?= form_error('id_kecamatan'); ?>
+							</div>
+					</div>
+					<div class="form-group">
 							<label for="form_kelurahan">Kelurahan</label>
 							<select id="form_kelurahan" class="custom-select <?= (form_error('id_kelurahan')) ? 'is-invalid' : ''; ?>" name="id_kelurahan">
 								<option value="0">Pilih Kecamatan</option>
 							</select>
 							<div class="invalid-feedback">
-	              <?= form_error('id_kelurahan'); ?>
-	            </div>
-						</div>
-						<div class="form-group">
+								<?= form_error('id_kelurahan'); ?>
+							</div>
+					</div> -->
+					<div class="form-group">
 							<label for="foto">Foto</label> <br>
 							<a href="<?= base_url('assets/img/img_pengaduan/default.png'); ?>" class="enlarge" id="check_enlarge_photo">
 								<img class="img-fluid rounded img-w-150 border border-dark" id="check_photo" src="<?= base_url('assets/img/img_pengaduan/default.png'); ?>" alt="Foto Pengaduan">
 							</a>
 							<br>
-						</div>
-						<div class="input-group mb-3">
+					</div>
+					<div class="input-group mb-3">
 						  <div class="input-group-prepend">
 						    <span class="input-group-text">Upload Foto</span>
 						  </div>
@@ -64,11 +65,11 @@
 						    <input type="file" class="custom-file-input" id="foto" aria-describedby="foto" id="foto" name="foto">
 						    <label class="custom-file-label" for="foto">Pilih file</label>
 						  </div>
-						</div>
-						<div class="form-group text-right">
+					</div>
+					<div class="form-group text-right">
 							<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Simpan</button>
-						</div>
-					</form>
+					</div>
+				</form>
 			  </div>
 			</div>
 		</div>

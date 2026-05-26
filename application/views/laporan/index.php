@@ -43,11 +43,11 @@
 								<?php endif ?>
 								<option value="semua">Semua</option>
 								<option value="belum_ditanggapi">Belum ditanggapi</option>
-								<option value="proses">Proses</option>
+								<option value="proses">Pending</option>
 								<option value="valid">Valid</option>
-								<option value="pengerjaan">Pengerjaan</option>
-								<option value="selesai">Selesai</option>
-								<option value="tidak_valid">Tidak Valid</option>
+								<!-- <option value="pengerjaan">Pengerjaan</option> -->
+								<option value="selesai">DONE</option>
+							<!-- 	<option value="tidak_valid">Tidak Valid</option> -->
 							</select>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 							<th class="align-middle">Lokasi</th>
 							<th class="align-middle">Foto</th>
 							<th class="align-middle">Status</th>
-							<th class="align-middle">Tanggapan</th>
+							<th class="align-middle">Teknisi</th>
 							<th class="align-middle">Aksi</th>
 						</tr>
 					</thead>
@@ -95,7 +95,7 @@
 							?>
 							<tr>
 								<td class="align-middle"><?= $i++; ?></td>
-								<td class="align-middle"><?= $dp['username']; ?></td>
+								<td class="align-middle"><?= $dp['nama']; ?></td>
 								<td class="align-middle"><?= $dp['tgl_pengaduan']; ?></td>
 								<td class="align-middle"><?= $dp['isi_laporan']; ?></td>
 								<td class="align-middle"><?= $dp['kelurahan']; ?></td>

@@ -17,7 +17,7 @@
 		<div class="col-lg-6 p-3">
 			<div class="card">
 			  <div class="card-header">
-			  	<h3 class="my-auto"><i class="fas fa-fw fa-plus"></i> Tambah Kecamatan</h3>
+			  	<h3 class="my-auto"><i class="fas fa-fw fa-plus"></i> Add Kecamatan</h3>
 			  </div>
 			  <div class="card-body">
 			  	<form action="<?= base_url('kecamatan/addKecamatan'); ?>" method="post">

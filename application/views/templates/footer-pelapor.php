@@ -6,7 +6,7 @@
 
 		<!-- /.content-wrapper -->
 		<footer class="main-footer">
-			<strong>Hak Cipta &copy; 2021 Oleh Andri Firman Saputra.</strong>
+			<strong>Hak Cipta &copy; 2026 All Rights reserved PT Fortunet Milennia Sukses.</strong>
 			<div class="float-right d-none d-sm-inline-block">
 				<b>Versi</b> 1.0.0
 			</div>

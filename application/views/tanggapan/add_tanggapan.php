@@ -44,14 +44,14 @@
 							<label for="tgl_pengaduan">Tanggal Pengaduan</label>
 							<input disabled type="datetime-local" class="form-control" value="<?= date('Y-m-d\TH:i', strtotime($pengaduan['tgl_pengaduan'])); ?>">
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label for="foto_tanggapan">Foto Tanggapan (Opsional)</label> <br>
 							<a href="<?= base_url('assets/img/img_tanggapan/default.png'); ?>" class="enlarge" id="check_enlarge_photo">
 								<img class="img-fluid rounded img-w-150 border border-dark" id="check_photo" src="<?= base_url('assets/img/img_tanggapan/default.png'); ?>" alt="Foto Tanggapan">
 							</a>
 							<br>
-						</div>
-						<div class="input-group mb-3">
+						</div> -->
+						<!-- <div class="input-group mb-3">
 						  <div class="input-group-prepend">
 						    <span class="input-group-text">Upload Foto</span>
 						  </div>
@@ -59,13 +59,18 @@
 						    <input type="file" class="custom-file-input" aria-describedby="foto_tanggapan" id="foto" name="foto_tanggapan">
 						    <label class="custom-file-label" for="foto_tanggapan">Pilih file</label>
 						  </div>
-						</div>
+						</div> -->
 						<div class="form-group">
-							<label for="isi_tanggapan">Isi Tanggapan</label>
-							<textarea id="isi_tanggapan" class="form-control <?= (form_error('isi_tanggapan')) ? 'is-invalid' : ''; ?>" name="isi_tanggapan" required><?= set_value('isi_tanggapan'); ?></textarea>
+							<label for="id_teknisi">Nama teknisi</label>
+							<select id="id_teknisi" class="form-control <?= (form_error('id_teknisi')) ? 'is-invalid' : ''; ?>" name="id_teknisi" required>
+								<option value="">Pilih Teknisi</option>
+								<?php foreach ($teknisi as $t): ?>
+									<option value="<?= $t['id_user']; ?>"><?= $t['nama']; ?></option>
+								<?php endforeach ?>
+							</select>
 							<div class="invalid-feedback">
-	              <?= form_error('isi_tanggapan'); ?>
-	            </div>
+								<?= form_error('id_teknisi'); ?>
+							</div>
 						</div>
 						<?php if ($pengaduan['status_pengaduan'] == 'belum_ditanggapi'): ?>
 							<label>Dalam Proses?</label>

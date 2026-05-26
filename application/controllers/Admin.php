@@ -15,8 +15,13 @@ class Admin extends CI_Controller
 		$this->admo->checkLoginAdmin();
 
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
-		$data['pengaduan_belum_ditanggapi']	= $this->pemo->getPengaduanByStatusPengaduan('belum_ditanggapi');
-		$data['title'] 		= 'Dasbor';
+		if ($data['dataUser']['jabatan'] == 'teknisi') 
+		{
+			$data['pengaduan_belum_ditanggapi']	= $this->pemo->getPengaduanByIdTeknisi($data['dataUser']['id_user']);
+		} else {
+			$data['pengaduan_belum_ditanggapi']	= $this->pemo->getPengaduanByStatusPengaduan('belum_ditanggapi');
+		}
+		$data['title'] 		= 'Dashboard admin';
 		$this->load->view('templates/header-admin', $data);
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/footer-admin', $data);

@@ -59,11 +59,15 @@
 					<div class="form-group">
 						<label for="jabatan">Jabatan</label>
 						<select id="jabatan" class="custom-select <?= (form_error('jabatan')) ? 'is-invalid' : ''; ?>" name="jabatan">
+							<option value="">-- Pilih Jabatan --</option>
+							<option value="administrator">Administrator</option>
+							<option value="teknisi">Teknisi</option>
+							<option value="ceo">CEO</option>
 							<option value="operator">Operator</option>
 						</select>
 						<div class="invalid-feedback">
-			              <?= form_error('jabatan'); ?>
-			            </div>
+							<?= form_error('jabatan'); ?>
+						</div>
 					</div>
 					<div class="form-group text-right">
 						<button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-save"></i> Simpan</button>

@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a href="<?= base_url('admin'); ?>" class="brand-link">
     <img src="<?= base_url('assets/img/img_properties/favicon.png'); ?>" alt="AdminLTE Logo" class="img-w-50">
-    <span class="brand-text">Zona Lapor</span>
+    <span class="brand-text">Fortunet</span>
   </a>
 
   <!-- Sidebar -->
@@ -32,7 +32,7 @@
           <?php endif ?>
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dasbor
+              Dashboard
             </p>
           </a>
         </li>
@@ -132,35 +132,37 @@
                 ): ?>
                   <a href="<?= base_url('masyarakat'); ?>" class="nav-link active">
                     <i class="fas fa-users nav-icon"></i>
-                    <p>Masyarakat</p>
+                    <p>Pelanggan</p>
                   </a>
                 <?php else: ?>
                   <a href="<?= base_url('masyarakat'); ?>" class="nav-link">
                     <i class="fas fa-users nav-icon"></i>
-                    <p>Masyarakat</p>
+                    <p>Pelanggan</p>
                   </a>
                 <?php endif ?>
               </li>
             </ul>
           </li>
         <?php endif ?>
-
-        <li class="nav-item">
-          <?php if (
-            $_SERVER['REQUEST_URI'] == '/zona_lapor/laporan' || 
-            $_SERVER['REQUEST_URI'] == '/zona_lapor/laporan/'
-          ): ?>
-            <a href="<?= base_url('laporan'); ?>" class="nav-link active">
-              <i class="fas fa-file-alt nav-icon"></i>
-              <p>Laporan</p>
-            </a>
-          <?php else: ?>
-            <a href="<?= base_url('laporan'); ?>" class="nav-link">
-              <i class="fas fa-file-alt nav-icon"></i>
-              <p>Laporan</p>
-            </a>
-          <?php endif ?>
-        </li>
+    
+        <?php if ($dataUser['jabatan'] == 'administrator'): ?>
+            <li class="nav-item">
+            <?php if (
+              $_SERVER['REQUEST_URI'] == '/zona_lapor/laporan' || 
+              $_SERVER['REQUEST_URI'] == '/zona_lapor/laporan/'
+            ): ?>
+              <a href="<?= base_url('laporan'); ?>" class="nav-link active">
+                <i class="fas fa-file-alt nav-icon"></i>
+                <p>Laporan</p>
+              </a>
+            <?php else: ?>
+              <a href="<?= base_url('laporan'); ?>" class="nav-link">
+                <i class="fas fa-file-alt nav-icon"></i>
+                <p>Laporan</p>
+              </a>
+            <?php endif ?>
+          </li>
+        <?php endif ?>
         
         <!-- <li class="nav-item">
           <a href="#" class="nav-link">
@@ -169,7 +171,7 @@
           </a>
         </li> -->
         <div class="dropdown-divider"></div>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <?php if (
             $_SERVER['REQUEST_URI'] == '/zona_lapor/log' || 
             $_SERVER['REQUEST_URI'] == '/zona_lapor/log/'
@@ -184,7 +186,7 @@
               <p>Aktivitas</p>
             </a>
           <?php endif ?>
-        </li>
+        </li> -->
         <li class="nav-item">
           <?php if (
             $_SERVER['REQUEST_URI'] == '/zona_lapor/saran' || 

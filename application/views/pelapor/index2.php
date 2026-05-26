@@ -4,45 +4,18 @@
 	$pengerjaan = $this->db->get_where('pengaduan', ['status_pengaduan' => 'pengerjaan'])->num_rows();
 	$selesai = $this->db->get_where('pengaduan', ['status_pengaduan' => 'selesai'])->num_rows();
 	$tidak_valid = $this->db->get_where('pengaduan', ['status_pengaduan' => 'tidak_valid'])->num_rows();
-	$id_user = $this->session->userdata('id_user');
-	$role = $this->db->get_where('user', ['id_user' => $id_user])->row_array()['jabatan'];
-
-	if ($role == 'teknisi') {
-		$query = $this->db->query("
-			SELECT COUNT(*) as total
-			FROM pengaduan p
-			WHERE EXISTS (
-				SELECT 1
-				FROM tanggapan t
-				WHERE t.id_pengaduan = p.id_pengaduan
-				AND t.id_teknisi = ?
-			)
-		", [$id_user]);
-
-		$belum_ditanggapi = $query->row()->total;
-	} else {
-		$query = $this->db->query("
-			SELECT COUNT(*) as total
-			FROM pengaduan p
-			WHERE NOT EXISTS (
-				SELECT 1
-				FROM tanggapan t
-				WHERE t.id_pengaduan = p.id_pengaduan
-			)
-		");
-		$belum_ditanggapi = $query->row()->total;
-	}
+	$belum_ditanggapi = $this->db->get_where('pengaduan', ['status_pengaduan' => 'belum_ditanggapi'])->num_rows();
 ?>
 
 
 <div class="container">
 	<div class="row justify-content-center py-3">
 		<div class="col-lg">
-			<h3><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</h3>
+			<h3><i class="fas fa-fw fa-tachometer-alt"></i> Dasbor</h3>
 		</div>
 	</div>
 	<div class="row my-3">
-		<div class="col-lg-3">
+        <div class="col-lg-3">
             <div class="card shadow">
 	            <div class="card-body">
 	              <h5><i class="fas fa-fw fa-times"></i> Belum ditanggapi</h5>
@@ -53,7 +26,7 @@
         <div class="col-lg-3">
             <div class="card shadow">
 	            <div class="card-body">
-	              <h5><i class="fas fa-fw fa-sync"></i> PENDING </h5>
+	              <h5><i class="fas fa-fw fa-sync"></i> Proses</h5>
 	              <h6 class="text-muted mt-3">Jumlah data: <span class="bg-info py-1 px-2 rounded"><?= $proses; ?></span></h6>
 	            </div>
             </div>
@@ -77,7 +50,7 @@
         <div class="col-lg-3">
 	        <div class="card shadow">
 	            <div class="card-body">
-	              <h5><i class="fas fa-fw fa-check-double"></i> DONE</h5>
+	              <h5><i class="fas fa-fw fa-check-double"></i> Selesai</h5>
 	              <h6 class="text-muted mt-3">Jumlah data: <span class="bg-info py-1 px-2 rounded"><?= $selesai; ?></span></h6>
 	            </div>
 	        </div>
@@ -102,7 +75,7 @@
 							<th class="align-middle">No.</th>
 							<th class="align-middle">Tanggal Pengaduan</th>
 							<th class="align-middle">Isi Laporan</th>
-							<!-- <th class="align-middle">Lokasi</th> -->
+							<th class="align-middle">Lokasi</th>
 							<th class="align-middle">Foto</th>
 							<th class="align-middle">Pelapor</th>
 							<th class="align-middle">Status</th>
@@ -111,18 +84,18 @@
 					</thead>
 					<tbody>
 						<?php $i = 1; ?>
-						<?php foreach ($pengaduan_belum_ditanggapi as $dp): ?>
+						<?php foreach ($pengaduan_belum_ditanggapi_pelapor as $dp): ?>
 							<tr>
 								<td class="align-middle"><?= $i++; ?></td>
 								<td class="align-middle"><?= $dp['tgl_pengaduan']; ?></td>
 								<td class="align-middle"><?= $dp['isi_laporan']; ?></td>
-								<!-- <td class="align-middle"><?= $dp['kelurahan']; ?></td> -->
+								<td class="align-middle"><?= $dp['kelurahan']; ?></td>
 								<td class="align-middle text-center">
 									<a href="<?= base_url('assets/img/img_pengaduan/') . $dp['foto']; ?>" class="enlarge">
 										<img src="<?= base_url('assets/img/img_pengaduan/') . $dp['foto']; ?>" class="img-fluid img-w-75-hm-100" alt="<?= $dp['foto']; ?>">
 									</a>
 								</td>
-								<td class="align-middle"><?= $dp['nama']; ?></td>
+								<td class="align-middle"><?= $dp['username']; ?></td>
 								<td class="align-middle"><button type="button" class="btn text-center btn-sm btn-secondary"><i class="fas fa-fw fa-times"></i> Belum ditanggapi</button></td>
 								<td class="align-middle text-center">
 									<a href="<?= base_url('tanggapan/index/' . $dp['id_pengaduan']); ?>" class="btn btn-sm btn-info m-1"><i class="fas fa-fw fa-reply"></i></a>
