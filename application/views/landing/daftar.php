@@ -81,7 +81,7 @@
 		              <?= form_error('no_telepon'); ?>
 		            </div>
 							</div>
-							<div class="form-group">
+					<div class="form-group">
 							<label for="form_kecamatan">Kecamatan</label>
 							<select class="custom-select <?= (form_error('id_kecamatan')) ? 'is-invalid' : ''; ?>" id="form_kecamatan">
 								<option value="0">Pilih Kecamatan</option>
@@ -90,18 +90,18 @@
 								<?php endforeach ?>
 							</select>
 							<div class="invalid-feedback">
-	              <?= form_error('id_kecamatan'); ?>
-	            </div>
-						</div>
-						<div class="form-group">
+								<?= form_error('id_kecamatan'); ?>
+							</div>
+					</div>
+					<div class="form-group">
 							<label for="form_kelurahan">Kelurahan</label>
 							<select id="form_kelurahan" class="custom-select <?= (form_error('id_kelurahan')) ? 'is-invalid' : ''; ?>" name="id_kelurahan">
 								<option value="0">Pilih Kelurahan</option>
 							</select>
 							<div class="invalid-feedback">
-	              <?= form_error('id_kelurahan'); ?>
-	            </div>
-						</div>
+								<?= form_error('id_kelurahan'); ?>
+							</div>
+					</div>
 							<div class="form-group">
 								<label for="alamat"><i class="fas fa-fw fa-map-marker-alt"></i> Alamat</label>
 								<textarea id="alamat" class="form-control <?= (form_error('alamat')) ? 'is-invalid' : ''; ?>" name="alamat" required><?= set_value('alamat'); ?></textarea>
@@ -119,3 +119,43 @@
 		</div>
 	</div>
 </main>
+
+<script>
+const kecamatanSelect = document.getElementById('form_kecamatan');
+const kelurahanSelect = document.getElementById('form_kelurahan');
+
+kecamatanSelect.addEventListener('change', async function () {
+    const idKecamatan = this.value;
+    kelurahanSelect.innerHTML =
+        '<option value="">Loading...</option>';
+    try {
+        const response = await fetch(
+            '<?= base_url("Landing/getKelurahan"); ?>',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    id_kecamatan: idKecamatan
+                })
+            }
+        );
+
+        const data = await response.json();
+        kelurahanSelect.innerHTML =
+            '<option value="">Pilih Kelurahan</option>';
+        data.forEach(item => {
+            kelurahanSelect.innerHTML += `
+                <option value="${item.id_kelurahan}">
+                    ${item.kelurahan}
+                </option>
+            `;
+        });
+    } catch (error) {
+        console.error(error);
+        kelurahanSelect.innerHTML =
+            '<option value="">Gagal memuat data</option>';
+    }
+});
+</script>

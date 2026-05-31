@@ -23,6 +23,14 @@ class Kelurahan_model extends CI_Model
 		return $this->db->get_where('kelurahan', ['id_kelurahan' => $id_kelurahan])->row_array();	
 	}
 
+	public function getKelurahanByKecamatan($id_kecamatan)
+	{
+		return $this->db
+			->where('id_kecamatan', $id_kecamatan)
+			->get('kelurahan')
+			->result_array();
+	}
+
 	public function addKelurahan()
 	{
 		$dataUser = $this->admo->getDataUserAdmin();

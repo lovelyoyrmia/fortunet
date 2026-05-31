@@ -9,6 +9,8 @@ class Landing extends CI_Controller
 		$this->load->model('Pengaduan_model', 'pemo');
 		$this->load->model('Landing_model', 'lamo');
 		$this->load->model('Tanggapan_model', 'tamo');
+		$this->load->model('Kelurahan_model', 'kelmo');
+		$this->load->model('Kecamatan_model', 'kemo');
 	}
 
 	public function checkLogin()
@@ -35,6 +37,8 @@ class Landing extends CI_Controller
 		$this->checkLogin();
 
 		$data['title'] = 'Daftar';
+		$data['kelurahan']	= $this->kelmo->getKelurahan();
+		$data['kecamatan']	= $this->kemo->getKecamatan();
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]|matches[password_verify]');
@@ -48,6 +52,15 @@ class Landing extends CI_Controller
 		} else {
 		    $this->lamo->daftar();
 		}
+	}
+
+	public function getKelurahan()
+	{
+		$id_kecamatan = $this->input->post('id_kecamatan');
+		$kelurahan = $this->kelmo->getKelurahanByKecamatan($id_kecamatan);
+		$this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($kelurahan));
 	}
 
 	public function masuk()
