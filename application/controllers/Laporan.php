@@ -19,6 +19,7 @@ class Laporan extends CI_Controller
 	{
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
 		$data['title']  	= 'Laporan';
+		$data['kelurahan']	= $this->kelmo->getKelurahan();
 		if (isset($_POST['btnFilter'])) 
 		{
 			$data['pengaduan']	= $this->pemo->getPengaduanFilter($_POST['dari_tgl'], $_POST['sampai_tgl'], $_POST['status_pengaduan']);

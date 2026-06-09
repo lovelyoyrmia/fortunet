@@ -13,7 +13,7 @@ class PelaporPengaduan_model extends CI_Model
 	public function getPengaduanByIdMasyarakat($id_masyarakat)
 	{
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		$this->db->order_by('id_pengaduan', 'desc');
 		return $this->db->get_where('pengaduan', ['pengaduan.id_masyarakat' => $id_masyarakat])->result_array();	
 	}
@@ -23,7 +23,7 @@ class PelaporPengaduan_model extends CI_Model
 		$dari_tgl = date("Y-m-d\T00:00:01", strtotime($dari_tgl));
 		$sampai_tgl = date("Y-m-d\T23:59:59", strtotime($sampai_tgl));
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		$this->db->order_by('id_pengaduan', 'desc');
 		if ($status_pengaduan == 'semua')
 		{
@@ -38,7 +38,7 @@ class PelaporPengaduan_model extends CI_Model
 	public function getPengaduanByStatusPengaduanByIdMasyarakat($status_pengaduan, $id_masyarakat)
 	{
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		$this->db->order_by('id_pengaduan', 'desc');
 		if ($status_pengaduan) 
 		{
@@ -53,7 +53,7 @@ class PelaporPengaduan_model extends CI_Model
 	public function getPengaduanById($id_pengaduan)
 	{
 		$this->db->join('masyarakat', 'pengaduan.id_masyarakat=masyarakat.id_masyarakat');
-		// $this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
+		$this->db->join('kelurahan', 'pengaduan.id_kelurahan=kelurahan.id_kelurahan');
 		return $this->db->get_where('pengaduan', ['id_pengaduan' => $id_pengaduan])->row_array();	
 	}
 
@@ -78,7 +78,7 @@ class PelaporPengaduan_model extends CI_Model
 		
 		$data = [
 			'isi_laporan'	=> $this->input->post('isi_laporan', true),
-			// 'id_kelurahan'	=> $this->input->post('id_kelurahan', true),
+			'id_kelurahan'	=> $this->input->post('id_kelurahan', true),
 			'id_masyarakat'	=> $dataUser['id_masyarakat'],
 			'tgl_pengaduan' => date('Y-m-d\TH:i:s')
 		];
@@ -121,7 +121,7 @@ class PelaporPengaduan_model extends CI_Model
 		
 		$data = [
 			'isi_laporan'	=> $this->input->post('isi_laporan', true),
-			// 'id_kelurahan'	=> $this->input->post('id_kelurahan', true),
+			'id_kelurahan'	=> $this->input->post('id_kelurahan', true),
 			'tgl_pengaduan' => date('Y-m-d\TH:i:s')
 		];
 
