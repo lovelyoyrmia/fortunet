@@ -83,7 +83,7 @@
 							</div>
 					<div class="form-group">
 							<label for="form_kecamatan">Kecamatan</label>
-							<select class="custom-select <?= (form_error('id_kecamatan')) ? 'is-invalid' : ''; ?>" id="form_kecamatan">
+							<select class="custom-select <?= (form_error('id_kecamatan')) ? 'is-invalid' : ''; ?>" name="id_kecamatan" id="form_kecamatan">
 								<option value="0">Pilih Kecamatan</option>
 								<?php foreach ($kecamatan as $dataKecamatan): ?>
 									<option value="<?= $dataKecamatan['id_kecamatan']; ?>"><?= $dataKecamatan['kecamatan']; ?></option>

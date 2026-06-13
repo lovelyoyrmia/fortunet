@@ -8,6 +8,8 @@ class Masyarakat extends CI_Controller
 		parent::__construct();
 		$this->load->model('Admin_model', 'admo');
 		$this->load->model('Masyarakat_model', 'mamo');
+		$this->load->model('Kelurahan_model', 'kelmo');
+		$this->load->model('Kecamatan_model', 'kemo');
 
 		$this->admo->checkLoginAdmin();
 	}
@@ -27,12 +29,16 @@ class Masyarakat extends CI_Controller
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
 		$data['title'] 		= 'Tambah Masyarakat';
 
+		$data['kecamatan']	= $this->kemo->getKecamatan();
+		$data['kelurahan']	= $this->kelmo->getKelurahan();
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]|matches[password_verify]');
 		$this->form_validation->set_rules('password_verify', 'Verifikasi Password', 'required|trim|min_length[3]|matches[password]');
 		$this->form_validation->set_rules('no_telepon', 'No. Telepon', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+		$this->form_validation->set_rules('id_kecamatan', 'Kecamatan', 'required|trim');
+		$this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim');
 		if ($this->form_validation->run() == false) {
 		    $this->load->view('templates/header-admin', $data);
 		    $this->load->view('masyarakat/add_masyarakat', $data);
@@ -48,9 +54,13 @@ class Masyarakat extends CI_Controller
 		$data['masyarakat']	= $this->mamo->getMasyarakatById($id_masyarakat);
 		$data['title'] 		= 'Ubah Masyarakat - ' . $data['masyarakat']['username'];
 
+		$data['kelurahan']	= $this->kelmo->getKelurahan();
+		$data['kecamatan']	= $this->kemo->getKecamatan();
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 		$this->form_validation->set_rules('no_telepon', 'No. Telepon', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+		$this->form_validation->set_rules('id_kecamatan', 'Kecamatan', 'required|trim');
+		$this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim');
 		if ($this->form_validation->run() == false) {
 		    $this->load->view('templates/header-admin', $data);
 		    $this->load->view('masyarakat/edit_masyarakat', $data);
@@ -63,6 +73,8 @@ class Masyarakat extends CI_Controller
 	public function removeMasyarakat($id_masyarakat)
 	{
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
+		$data['kelurahan']	= $this->kelmo->getKelurahan();
+		$data['kecamatan']	= $this->kemo->getKecamatan();
 		$this->mamo->removeMasyarakat($id_masyarakat);
 	}
 }
