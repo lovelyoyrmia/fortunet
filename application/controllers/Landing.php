@@ -45,6 +45,8 @@ class Landing extends CI_Controller
 		$this->form_validation->set_rules('password_verify', 'Verifikasi Password', 'required|trim|min_length[3]|matches[password]');
 		$this->form_validation->set_rules('no_telepon', 'No. Telepon', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+		$this->form_validation->set_rules('id_kecamatan', 'Kecamatan', 'required|trim');
+		$this->form_validation->set_rules('id_kelurahan', 'Kelurahan', 'required|trim');
 		if ($this->form_validation->run() == false) {
 		    $this->load->view('templates/header', $data);
 			$this->load->view('landing/daftar', $data);

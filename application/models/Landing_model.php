@@ -10,7 +10,9 @@ class Landing_model extends CI_Model
 			'username'	=> $this->input->post('username', true),
 			'password'	=> password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
 			'no_telepon'=> $this->input->post('no_telepon', true),
-			'alamat'	=> $this->input->post('alamat', true)
+			'alamat'	=> $this->input->post('alamat', true),
+			'id_kecamatan' => $this->input->post('id_kecamatan', true),
+			'id_kelurahan' => $this->input->post('id_kelurahan', true)
 		];
 
 		$this->db->insert('masyarakat', $data);
