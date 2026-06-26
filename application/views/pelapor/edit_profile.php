@@ -25,15 +25,15 @@
 							<label for="nama"><i class="fas fa-fw fa-user"></i> Nama Lengkap</label>
 							<input type="text" id="nama" class="form-control <?= (form_error('nama')) ? 'is-invalid' : ''; ?>" name="nama" required value="<?= (form_error('nama')) ? set_value('nama') : $dataUser['nama']; ?>">
 							<div class="invalid-feedback">
-	              <?= form_error('nama'); ?>
-	            </div>
+								<?= form_error('nama'); ?>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="no_telepon"><i class="fas fa-fw fa-phone"></i> No. Telepon</label>
 							<input type="number" id="no_telepon" class="form-control <?= (form_error('no_telepon')) ? 'is-invalid' : ''; ?>" name="no_telepon" required value="<?= (form_error('no_telepon')) ? set_value('no_telepon') : $dataUser['no_telepon']; ?>">
 							<div class="invalid-feedback">
-	              <?= form_error('no_telepon'); ?>
-	            </div>
+								<?= form_error('no_telepon'); ?>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="alamat"><i class="fas fa-fw fa-map-marker-alt"></i> Alamat</label>

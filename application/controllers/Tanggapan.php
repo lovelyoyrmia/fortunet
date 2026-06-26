@@ -40,7 +40,7 @@ class Tanggapan extends CI_Controller
 		$data['title']  	= 'Tambah Tanggapan - ' . $data['pengaduan']['isi_laporan'];
 		$data['teknisi']	= $this->temo->getDataTeknisi();
 
-		$this->form_validation->set_rules('id_teknisi', 'Teknisi', 'required|trim|is_natural_no_zero');
+		$this->form_validation->set_rules('nama_teknisi', 'Teknisi', 'required|trim');
 		// $this->form_validation->set_rules('isi_tanggapan', 'Isi Tanggapan', 'required|trim');
 		$this->form_validation->set_rules('status_tanggapan', 'Status Tanggapan', 'required|trim');
 		if ($this->form_validation->run() == false) {

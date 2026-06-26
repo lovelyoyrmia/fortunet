@@ -25,12 +25,7 @@ class Pengaduan extends CI_Controller
 	{
 		$data['dataUser']	= $this->admo->getDataUserAdmin();
 		$data['title']  	= 'Pengaduan';
-		if ($data['dataUser']['jabatan'] == 'teknisi') 
-		{
-			$data['pengaduan']	= $this->pemo->getPengaduanByIdTeknisi($data['dataUser']['id_user']);
-		} else {
-			$data['pengaduan']	= $this->pemo->getPengaduanByStatusPengaduan($status_pengaduan);
-		}
+		$data['pengaduan']	= $this->pemo->getPengaduanByStatusPengaduan($status_pengaduan);
 
 		$this->load->view('templates/header-admin', $data);
 		$this->load->view('pengaduan/index', $data);

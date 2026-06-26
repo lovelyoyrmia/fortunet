@@ -18,9 +18,6 @@ class Tanggapan_model extends CI_Model
 
 			pelapor.nama as nama_pelapor,
 			pelapor.username as username_pelapor,
-
-			teknisi.nama as nama_teknisi,
-			teknisi.username as username_teknisi
 		');
 
 		$this->db->from('tanggapan');
@@ -28,11 +25,6 @@ class Tanggapan_model extends CI_Model
 		$this->db->join(
 			'user as pelapor',
 			'tanggapan.id_user = pelapor.id_user'
-		);
-
-		$this->db->join(
-			'user as teknisi',
-			'tanggapan.id_teknisi = teknisi.id_user'
 		);
 
 		$this->db->join(
@@ -53,9 +45,6 @@ class Tanggapan_model extends CI_Model
 
 			pelapor.nama as nama_pelapor,
 			pelapor.username as username_pelapor,
-
-			teknisi.nama as nama_teknisi,
-			teknisi.username as username_teknisi
 		');
 
 		$this->db->from('tanggapan');
@@ -63,11 +52,6 @@ class Tanggapan_model extends CI_Model
 		$this->db->join(
 			'user as pelapor',
 			'tanggapan.id_user = pelapor.id_user'
-		);
-
-		$this->db->join(
-			'user as teknisi',
-			'tanggapan.id_teknisi = teknisi.id_user'
 		);
 
 		$this->db->join(
@@ -148,7 +132,7 @@ class Tanggapan_model extends CI_Model
 			'status_tanggapan'	=> $status_tanggapan,
 			'id_pengaduan'		=> $id_pengaduan,
 			'id_user' 			=> $dataUser['id_user'],
-			'id_teknisi'		=> $this->input->post('id_teknisi', true),
+			'nama_teknisi'		=> $this->input->post('nama_teknisi', true),
 		];
 
 		$this->db->insert('tanggapan', $data);
@@ -194,11 +178,6 @@ class Tanggapan_model extends CI_Model
 			'isi_tanggapan'		=> $this->input->post('isi_tanggapan', true),
 			'tgl_tanggapan'		=> date('Y-m-d\TH:i:s'),
 		];
-
-		if ($dataUser['jabatan'] == 'teknisi') 
-		{
-			$data['id_teknisi'] = $dataUser['id_user'];
-		}
 
 		$this->db->update('tanggapan', $data, ['id_tanggapan' => $id_tanggapan]);
 

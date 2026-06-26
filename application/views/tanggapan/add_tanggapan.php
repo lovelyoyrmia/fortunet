@@ -61,15 +61,10 @@
 						  </div>
 						</div> -->
 						<div class="form-group">
-							<label for="id_teknisi">Nama teknisi</label>
-							<select id="id_teknisi" class="form-control <?= (form_error('id_teknisi')) ? 'is-invalid' : ''; ?>" name="id_teknisi" required>
-								<option value="">Pilih Teknisi</option>
-								<?php foreach ($teknisi as $t): ?>
-									<option value="<?= $t['id_user']; ?>"><?= $t['nama']; ?></option>
-								<?php endforeach ?>
-							</select>
+							<label for="nama_teknisi">Nama Teknisi</label>
+							<input type="text" id="nama_teknisi" class="form-control <?= (form_error('nama_teknisi')) ? 'is-invalid' : ''; ?>" name="nama_teknisi" required value="">
 							<div class="invalid-feedback">
-								<?= form_error('id_teknisi'); ?>
+								<?= form_error('nama_teknisi'); ?>
 							</div>
 						</div>
 						<?php if ($pengaduan['status_pengaduan'] == 'belum_ditanggapi'): ?>

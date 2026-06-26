@@ -7,20 +7,20 @@
 	$id_user = $this->session->userdata('id_user');
 	$role = $this->db->get_where('user', ['id_user' => $id_user])->row_array()['jabatan'];
 
-	if ($role == 'teknisi') {
-		$query = $this->db->query("
-			SELECT COUNT(*) as total
-			FROM pengaduan p
-			WHERE EXISTS (
-				SELECT 1
-				FROM tanggapan t
-				WHERE t.id_pengaduan = p.id_pengaduan
-				AND t.id_teknisi = ?
-			)
-		", [$id_user]);
+	// $query = $this->db->query("
+	// 	SELECT COUNT(*) as total
+	// 	FROM pengaduan p
+	// 	WHERE EXISTS (
+	// 		SELECT 1
+	// 		FROM tanggapan t
+	// 		WHERE t.id_pengaduan = p.id_pengaduan
+	// 		AND t.id_teknisi = ?
+	// 	)
+	// ", [$id_user]);
 
-		$belum_ditanggapi = $query->row()->total;
-	} else {
+	// $belum_ditanggapi = $query->row()->total;
+	// if ($role == 'teknisi') {
+	// } else {
 		$query = $this->db->query("
 			SELECT COUNT(*) as total
 			FROM pengaduan p
@@ -31,7 +31,7 @@
 			)
 		");
 		$belum_ditanggapi = $query->row()->total;
-	}
+	// }
 ?>
 
 
